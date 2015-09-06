@@ -24,11 +24,12 @@ public class PlayerController : MonoBehaviour {
   		 rbody.AddForce (movement * speed); 
  	}
 
-	 void OnTrrigerEnter(Collider other) {
+	 void OnTriggerEnter(Collider other) {
 		if (other.gameObject.CompareTag ("Cubes")) {
 			other.gameObject.SetActive (false);
 			count = count + 1;
 			SetCountText();
+			return;
 		}
 	}
 
