@@ -13,7 +13,20 @@ public class PlayerController : MonoBehaviour {
   // set params
   public float speed;
   public float tilt;
+  public float fireRate;
   public Boundary boundary;
+
+  public GameObject shot;
+  public Transform shotSpawn; // もしGameobject型でやりたい場合、positionとrotationの値を取り出しをshotSpawn.transform.positionなどとやる必要がある
+
+  private float nextFire;
+
+  void Update() {
+    if (Input.GetButton("Fire1") && Time.time > nextFire) {
+      Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+      nextFire = Time.time + fireRate;
+    }
+  }
 
   void FixedUpdate() {
     float moveHorizontal = Input.GetAxis("Horizontal");
