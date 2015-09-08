@@ -8,14 +8,13 @@ public class RandomObjectGenerator : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
-    for (int i = 0; i <= 200; i++) {
+    for (int i = 0; i <= 500; i++) {
       Instantiate(targetGameObject, new Vector3(Random.Range(MinRange, MaxRange),
             Random.Range(MinRange, MaxRange),
-            Random.Range(MinRange, MaxRange)), Quaternion.identity);
+            Random.Range(MinRange, MaxRange)),
+            Quaternion.Euler(Random.Range(0, 180),
+                             Random.Range(0, 180),
+                             Random.Range(0, 180)));
     }
-  }
-
-  void Update() {
-    transform.Rotate(new Vector3(Random.Range(0, 180), Random.Range(0, 180), Random.Range(0, 180)));
   }
 }
