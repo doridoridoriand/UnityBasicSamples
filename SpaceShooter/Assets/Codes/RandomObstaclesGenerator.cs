@@ -9,14 +9,19 @@ public class RandomObstaclesGenerator : MonoBehaviour {
   public float startObstacle;
   public float intarvalOfGenerateObstacle;
 
+  public GUIText scoreText;
+  public int score;
+
   void Start() {
+    scoreText = this.GetComponent<GUIText>();
+    score = 0;
     StartCoroutine (GenerateObstacles());
+    UpdateScore();
   }
 
   IEnumerator GenerateObstacles() {
     yield return new WaitForSeconds(startObstacle);
-    while (true)
-    {
+    while (true) {
       for (int counter = 0; counter < numberOfObstacles; counter++) {
         Instantiate(targetGameObject,
             new Vector3(Random.Range(minRange, maxRange),
@@ -31,5 +36,14 @@ public class RandomObstaclesGenerator : MonoBehaviour {
         yield return new WaitForSeconds(intarvalOfGenerateObstacle);
       }
     }
+  }
+
+  public void AddScore(int newScoreValue) {
+    score += newScoreValue;
+    UpdateScore();
+  }
+
+  void UpdateScore() {
+    scoreText.text = "Score: " + score;
   }
 }
