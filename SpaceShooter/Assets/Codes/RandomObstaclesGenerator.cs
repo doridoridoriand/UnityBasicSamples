@@ -15,7 +15,7 @@ public class RandomObstaclesGenerator : MonoBehaviour {
   void Start() {
     scoreText = this.GetComponent<GUIText>();
     score = 0;
-    StartCoroutine (GenerateObstacles());
+    StartCoroutine(GenerateObstacles());
     UpdateScore();
   }
 
